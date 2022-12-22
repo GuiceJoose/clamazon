@@ -1,11 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
+import { toast } from "react-toastify";
 import Layout from "../../components/Layout";
 import Product from "../../models/Product";
 import db from "../../utils/db";
+import { Store } from "../../utils/Store";
 
 function ProductPage({ product }) {
+  const { state, dispatch } = useContext(Store);
+
+  const handleAddToCart = () => {
+    const existingItem = state.cart.cartItems.find(
+      (x) => x.slug === product.slug
+    );
+    const quantity = existingItem ? existingItem.quantity + 1 : 1;
+
+    if (product.countInStock < quantity) {
+      toast.error("Sorry. Product is out of stock");
+      return;
+    }
+
+    dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity } });
+  };
+
   if (!product) {
     return <div>Sorry, Product Not Found</div>;
   }
@@ -36,7 +54,9 @@ function ProductPage({ product }) {
               <div>Status</div>
               <div>{product.countInStock > 0 ? "In stock" : "Unavailable"}</div>
             </div>
-            <button className="primary-button w-full">Add to cart</button>
+            <button className="primary-button w-full" onClick={handleAddToCart}>
+              Add to cart
+            </button>
           </div>
         </div>
       </div>

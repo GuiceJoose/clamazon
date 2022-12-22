@@ -1,12 +1,21 @@
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Store } from "../utils/Store";
 
 function Layout({ title, children }) {
   const { status, data: session } = useSession();
+  const { state, dispatch } = useContext(Store);
+  const { cart } = state;
+
+  const [cartItemsQuantity, setCartItemsQuantity] = useState(0);
+  useEffect(() => {
+    setCartItemsQuantity(cart.cartItems.reduce((a, b) => a + b.quantity, 0));
+  }, [cart.cartItems]);
+
   return (
     <>
       <Head>
@@ -28,6 +37,11 @@ function Layout({ title, children }) {
             <div>
               <Link className="p-2" href="/cart">
                 Cart
+                {cartItemsQuantity > 0 && (
+                  <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                    {cartItemsQuantity}
+                  </span>
+                )}
               </Link>
               {status === "loading" ? (
                 "Loading"
