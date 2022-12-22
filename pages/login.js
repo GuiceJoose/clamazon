@@ -1,15 +1,42 @@
 import Layout from "../components/Layout";
-import React from "react";
+import React, { useEffect } from "react";
+import { signIn, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 function LoginPage() {
+  const { data: session } = useSession();
+
+  const router = useRouter();
+  const { redirect } = router.query;
+
+  useEffect(() => {
+    if (session?.user) {
+      router.push(redirect || "/");
+    }
+  }, [router, session, redirect]);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async ({ email, password }) => {
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+      if (result.error) {
+        toast.error(result.error);
+      }
+    } catch (err) {
+      toast.error(err);
+    }
+  };
   return (
     <Layout title="Login">
       <form
