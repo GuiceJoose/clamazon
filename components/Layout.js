@@ -21,8 +21,12 @@ function Layout({ title, children }) {
               Clamazon
             </Link>
             <div>
-              <Link href="/cart">Cart</Link>
-              <Link href="/login">Login</Link>
+              <Link className="p-2" href="/cart">
+                Cart
+              </Link>
+              <Link className="p-2" href="/login">
+                Login
+              </Link>
             </div>
           </nav>
         </header>
