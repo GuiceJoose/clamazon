@@ -20,8 +20,7 @@ const dummydata = {
       name: "Crocea Clam",
       slug: "crocea-clam",
       category: "Clams",
-      image:
-        "https://www.liveaquaria.com/images/categories/large/lg_80194_Crocea_Clam.jpg",
+      image: "/images/Crocea_Clam.jpg",
       price: 99.99,
       colors: ["Black", "Purple", "Blue"],
       countInStock: 16,
@@ -32,8 +31,7 @@ const dummydata = {
       name: "Maxima Clam",
       slug: "maxima-clam",
       category: "Clams",
-      image:
-        "https://www.liveaquaria.com/images/categories/product/lg_072919_271.jpg",
+      image: "/images/Maxima_Clam.jpg",
       price: 86.99,
       colors: ["Blue", "Green"],
       countInStock: 19,
@@ -44,8 +42,7 @@ const dummydata = {
       name: "Hippopus Clam",
       slug: "hippopus-clam",
       category: "Clams",
-      image:
-        "https://www.liveaquaria.com/images/categories/large/lg89442HippopusClam.jpg",
+      image: "/images/Hippopus_Clam.jpg",
       price: 65.99,
       colors: ["Black", "Tan", "Yellow"],
       countInStock: 9,
@@ -56,8 +53,7 @@ const dummydata = {
       name: "Blue Squamosa Clam",
       slug: "blue-squamosa-clam",
       category: "Clams",
-      image:
-        "https://www.liveaquaria.com/images/categories/large/lg_Blue_Squamosa.jpg",
+      image: "/images/Blue_Squamosa_Clam.jpg",
       price: 299.99,
       colors: ["Blue"],
       countInStock: 4,
@@ -68,8 +64,7 @@ const dummydata = {
       name: "Birdsnest Coral",
       slug: "birdsnest-coral",
       category: "SPS Corals",
-      image:
-        "https://www.liveaquaria.com/images/categories/product/lg_78027_Birdnest_Pink_Yellow.jpg",
+      image: "/images/Birdnest_Coral.jpg",
       price: 59.99,
       colors: ["Green", "Pink"],
       countInStock: 33,
@@ -80,8 +75,7 @@ const dummydata = {
       name: "Montipora Capricornis",
       slug: "montipora-capricornis",
       category: "SPS Corals",
-      image:
-        "https://www.liveaquaria.com/images/categories/large/lg-90052-Leef-Plate-Montipo.jpg",
+      image: "/images/Montipora_Capricornis.jpg",
       price: 114.99,
       colors: ["Green", "Orange"],
       countInStock: 21,
@@ -92,11 +86,10 @@ const dummydata = {
       name: "Torch Coral",
       slug: "torch-coral",
       category: "LPS Corals",
-      image:
-        "https://www.liveaquaria.com/images/categories/product/lg_011719_283.jpg",
+      image: "/images/Torch_Coral.jpg",
       price: 259.99,
       colors: ["Brown", "Green", "Purple", "Yellow"],
-      countInStock: "",
+      countInStock: 7,
       description:
         "The Euphyllia Torch Coral is a large polyp stony (LPS) coral, often referred to as Trumpet Coral or Pom-Pom Coral. It has long and flowing polyps with single rounded tips which are visible throughout the day and night, hiding its branching skeletal base most of the time. It may be brown or green with yellow on the tips of its tentacles. The yellow will sometimes appear to glow under actinic lighting.",
     },
@@ -104,8 +97,7 @@ const dummydata = {
       name: "Elegance Coral",
       slug: "elegance-coral",
       category: "LPS Corals",
-      image:
-        "https://www.liveaquaria.com/images/categories/product/lg-103119-182a.jpg",
+      image: "/images/Elegance_Coral.jpg",
       price: 99.99,
       colors: ["Green", "Purple", "Red", "Yellow"],
       countInStock: 11,
@@ -116,8 +108,7 @@ const dummydata = {
       name: "Green Bubble Coral",
       slug: "green-bubble-coral",
       category: "LPS Corals",
-      image:
-        "https://www.liveaquaria.com/images/categories/product/lg_091719_221.jpg",
+      image: "/images/Green_Bubble_Coral.jpg",
       price: 99.99,
       colors: ["Green"],
       countInStock: 9,

@@ -106,7 +106,11 @@ a {
 
 input,
 textarea {
-  @apply rounded border p-2  outline-none ring-indigo-300  focus:ring;
+  @apply rounded border p-2 outline-none ring-indigo-300 focus:ring;
+}
+
+.basic-card {
+  @apply mb-5 block rounded-lg border border-gray-200 shadow-md;
 }
 
 .primary-button {

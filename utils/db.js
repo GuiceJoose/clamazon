@@ -39,5 +39,13 @@ async function connect() {
   return cached.conn;
 }
 
-const db = { connect };
+function convertDocToObj(doc) {
+  const obj = doc;
+  obj._id = doc._id.toString();
+  obj.createdAt = doc.createdAt.toString();
+  obj.updatedAt = doc.updatedAt.toString();
+  return obj;
+}
+
+const db = { connect, convertDocToObj };
 export default db;

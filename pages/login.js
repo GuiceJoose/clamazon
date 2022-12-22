@@ -10,13 +10,12 @@ function LoginPage() {
   const { data: session } = useSession();
 
   const router = useRouter();
-  const { redirect } = router.query;
 
   useEffect(() => {
     if (session?.user) {
-      router.push(redirect || "/");
+      router.push("/");
     }
-  }, [router, session, redirect]);
+  }, [router, session]);
 
   const {
     register,
@@ -30,7 +29,7 @@ function LoginPage() {
         email,
         password,
       });
-      if (result.error) {
+      if (result?.error) {
         toast.error(result.error);
       }
     } catch (err) {
