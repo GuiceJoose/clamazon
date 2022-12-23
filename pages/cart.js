@@ -6,6 +6,7 @@ import { Store } from "../utils/Store";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { FiXCircle } from "react-icons/fi";
+import CheckoutForm from "../components/CheckoutForm";
 
 function CartPage() {
   const router = useRouter();
@@ -85,12 +86,12 @@ function CartPage() {
                 </div>
               </li>
               <li>
-                <button
-                  onClick={() => router.push("/shipping")}
-                  className="primary-button w-full"
-                >
-                  Check Out
-                </button>
+                <CheckoutForm
+                  checkoutTotal={cartItems.reduce(
+                    (a, b) => a + b.quantity * b.price,
+                    0
+                  )}
+                />
               </li>
             </ul>
           </div>
