@@ -49,7 +49,20 @@ function reducer(state, action) {
     case "CART_CLEAR_ITEMS":
       return { ...state, cart: { ...state.cart, cartItems: [] } };
 
-    case "SAVE_SHIPPING_ADDRESS":
+    case "SAVE_SHIPPING_ADDRESS": {
+      const { fullName, address, city, zipCode } = action.payload;
+      Cookies.set(
+        "cart",
+        JSON.stringify({
+          ...state.cart,
+          shippingAddress: {
+            fullName,
+            address,
+            city,
+            zipCode,
+          },
+        })
+      );
       return {
         ...state,
         cart: {
@@ -60,6 +73,7 @@ function reducer(state, action) {
           },
         },
       };
+    }
     default:
       return state;
   }

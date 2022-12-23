@@ -86,12 +86,12 @@ function CartPage() {
                 </div>
               </li>
               <li>
-                <CheckoutForm
-                  checkoutTotal={cartItems.reduce(
-                    (a, b) => a + b.quantity * b.price,
-                    0
-                  )}
-                />
+                <button
+                  onClick={() => router.push("/shipping")}
+                  className="primary-button w-full"
+                >
+                  Check Out
+                </button>
               </li>
             </ul>
           </div>
@@ -100,5 +100,12 @@ function CartPage() {
     </Layout>
   );
 }
+
+// Left this here for later <CheckoutForm
+// checkoutTotal={cartItems.reduce(
+//   (a, b) => a + b.quantity * b.price,
+//   0
+// )}
+// />
 
 export default dynamic(() => Promise.resolve(CartPage), { ssr: false });
