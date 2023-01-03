@@ -86,7 +86,7 @@ function LoginPage() {
         </div>
         <div className="mb-4 ">
           Don&apos;t have an account? &nbsp;
-          <Link href="/sign-up">Sign Up</Link>
+          <Link href="/register">Sign Up</Link>
         </div>
       </form>
     </Layout>
