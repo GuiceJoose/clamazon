@@ -1,10 +1,12 @@
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Store } from "../utils/Store";
+import { Menu } from "@headlessui/react";
+import Cookies from "js-cookie";
 
 function Layout({ title, children }) {
   const { status, data: session } = useSession();
@@ -15,6 +17,12 @@ function Layout({ title, children }) {
   useEffect(() => {
     setCartItemsQuantity(cart.cartItems.reduce((a, b) => a + b.quantity, 0));
   }, [cart.cartItems]);
+
+  const handleLogout = () => {
+    Cookies.remove("cart");
+    dispatch({ type: "CART_RESET" });
+    signOut({ callbackUrl: "/login" });
+  };
 
   return (
     <>
@@ -46,7 +54,44 @@ function Layout({ title, children }) {
               {status === "loading" ? (
                 "Loading"
               ) : session?.user ? (
-                session.user.name
+                <Menu as="div" className="relative inline-block">
+                  <Menu.Button className="text-blue-600">
+                    {session.user.name}
+                  </Menu.Button>
+                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          className={`dropdown-link ${active && "bg-gray-200"}`}
+                          href="/account-info"
+                        >
+                          My Account
+                        </a>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          className={`dropdown-link ${active && "bg-gray-200"}`}
+                          href="/order-history"
+                        >
+                          Order History
+                        </a>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          className={`dropdown-link ${active && "bg-gray-200"}`}
+                          href="#"
+                          onClick={handleLogout}
+                        >
+                          Logout
+                        </a>
+                      )}
+                    </Menu.Item>
+                  </Menu.Items>
+                </Menu>
               ) : (
                 <Link className="p-2" href="/login">
                   Login

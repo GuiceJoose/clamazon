@@ -6,7 +6,6 @@ import { Store } from "../utils/Store";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { FiXCircle } from "react-icons/fi";
-import CheckoutForm from "../components/CheckoutForm";
 
 function CartPage() {
   const router = useRouter();
@@ -100,12 +99,5 @@ function CartPage() {
     </Layout>
   );
 }
-
-// Left this here for later <CheckoutForm
-// checkoutTotal={cartItems.reduce(
-//   (a, b) => a + b.quantity * b.price,
-//   0
-// )}
-// />
 
 export default dynamic(() => Promise.resolve(CartPage), { ssr: false });
