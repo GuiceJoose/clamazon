@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-function ProductCard({ product }) {
+function ProductCard({ handleAddToCart, product }) {
   return (
     <div className="basic-card">
       <Link href={`/product/${product.slug}`}>
@@ -12,7 +12,11 @@ function ProductCard({ product }) {
           <h2 className="text-lg">{product.name}</h2>
         </Link>
         <p>${product.price}</p>
-        <button className="primary-button" type="button">
+        <button
+          className="primary-button"
+          type="button"
+          onClick={() => handleAddToCart(product)}
+        >
           Add to cart
         </button>
       </div>
