@@ -110,7 +110,7 @@ textarea {
 }
 
 .basic-card {
-  @apply mb-5 block rounded-lg border border-gray-200 shadow-md;
+  @apply mb-5 flex flex-col justify-between rounded-lg border border-gray-200 shadow-md;
 }
 
 .primary-button {

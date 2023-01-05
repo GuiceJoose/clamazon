@@ -7,7 +7,7 @@ function ProductCard({ handleAddToCart, product }) {
       <Link href={`/product/${product.slug}`}>
         <img src={product.image} alt={product.name} className="rounded" />
       </Link>
-      <div className="flex flex-col items-center justify-center p-4">
+      <div className="flex flex-col text-center items-stretch justify-between p-4 h-full">
         <Link href={`/product/${product.slug}`}>
           <h2 className="text-lg">{product.name}</h2>
         </Link>
